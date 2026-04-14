@@ -1,0 +1,33 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  clerkId       String    @unique // To link with Clerk Auth
+  isPremium     Boolean   @default(false)
+  resumes       Resume[]
+  createdAt     DateTime  @default(now())
+}
+
+model Resume {
+  id              String   @id @default(cuid())
+  userId          String
+  user            User     @relation(fields: [userId], references: [id])
+  fileName        String
+  fileUrl         String   // URL from UploadThing/S3
+  jobTitle        String
+  jobDescription  String   @db.Text
+  atsScore        Int?
+  feedback        Json?    // Store AI recommendations here
+  interviewStatus String   @default("LOCKED") // LOCKED, UNLOCKED, COMPLETED
+  createdAt       DateTime @default(now())
+}

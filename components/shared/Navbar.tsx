@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export const Navbar = () => {
   return (
-    <nav className="flex justify-between items-center p-4 border-b bg-white">
+    <nav className="flex justify-between items-center p-4 border-b bg-blue">
       <h1 className="text-xl font-bold text-primary">CareerPulse AI</h1>
       <div className="space-x-6 hidden md:flex">
         <Link href="/about" className="hover:text-primary">
