@@ -5,8 +5,8 @@ const config = {
       colors: {
         primary: "#5048e5",
         secondary: "#6366f1",
-        background: "#f6f6f8",
-        surface: "#ffffff",
+        background: "#dddddd",
+        surface: "#eeeeee",
       },
     },
   },
